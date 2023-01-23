@@ -2,13 +2,18 @@ package com.devlee.launchpicker.di
 
 import android.content.Context
 import android.content.Context.SENSOR_SERVICE
+import android.content.SharedPreferences
 import android.hardware.Sensor
 import android.hardware.SensorManager
+import com.devlee.launchpicker.R
+import com.devlee.launchpicker.util.Consts.STORE_LIST
+import com.devlee.launchpicker.util.PreferenceUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,4 +32,19 @@ object AppModule {
         return sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
 
+    @Provides
+    @Singleton
+    @Named(STORE_LIST)
+    fun providerStoreList(
+        @ApplicationContext context: Context
+    ) : List<String> = context.resources.getStringArray(R.array.lunch_store).toList()
+
+    @Provides
+    @Singleton
+    fun providerPreference(
+        @ApplicationContext context: Context
+    ) : SharedPreferences {
+        val preferenceName = "lunchPickerPreference"
+        return context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
+    }
 }
