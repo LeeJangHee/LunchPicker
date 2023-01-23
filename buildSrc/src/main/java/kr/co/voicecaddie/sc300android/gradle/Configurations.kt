@@ -11,7 +11,7 @@ object Configurations {
     const val versionCode = 1
     const val majorVersion = 1
     const val minorVersion = 0
-    const val patchVersion = 0
+    const val patchVersion = 1
     const val developVersion = 0
 
 
