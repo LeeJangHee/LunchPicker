@@ -1,0 +1,124 @@
+import kr.co.voicecaddie.sc300android.gradle.Configurations
+import kr.co.voicecaddie.sc300android.gradle.Dependencies
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk Configurations.compileSdk
+
+    defaultConfig {
+        applicationId "com.devlee.launchpicker"
+        minSdk Configurations.minSdk
+        targetSdk Configurations.targetSdk
+        versionCode Configurations.versionCode
+        versionName Configurations.getVersionName()
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../file/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.androidxCoreKtx
+    implementation Dependencies.androidxAppCompat
+    implementation Dependencies.materialComponents
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.androidxRecyclerview
+    implementation Dependencies.androidLegacySupport
+    testImplementation Dependencies.testImplJunit
+    androidTestImplementation Dependencies.androidxTestJunit
+    androidTestImplementation Dependencies.espressoCore
+
+    // splash screen
+    implementation Dependencies.androidSplashScreen
+
+    /* Navigation Component */
+    implementation Dependencies.navigationFragmentKTX
+    implementation Dependencies.navigationUIKTX
+    implementation Dependencies.navigationRuntimeKTX
+    implementation Dependencies.navigationDynamicFeaturesFragment
+    androidTestImplementation Dependencies.navigationTest
+
+    // view(Activity, Fragment)
+    implementation Dependencies.androidxFragmentKtx
+    debugImplementation Dependencies.androidxFragmentTest
+    implementation Dependencies.androidxActivityKtx
+
+    // ViewModel - LiveData
+    implementation Dependencies.androidxLifecycleViewModelKtx
+    implementation Dependencies.androidxLifecycleLiveDataKtx
+    implementation Dependencies.androidxLifecycleRuntimeKtx
+    implementation Dependencies.androidxLifecycleViewModelSavedstate
+    kapt Dependencies.androidxLifecycleCommonJava8
+
+    // Dagger-Hilt
+    implementation Dependencies.daggerHiltAndroid
+    implementation Dependencies.daggerHiltNavGraph
+    kapt Dependencies.daggerHiltCompiler
+
+    // Gson
+    implementation Dependencies.gson
+    // Moshi
+    implementation Dependencies.moshi
+    kapt Dependencies.moshiKotlinCodegen
+    implementation Dependencies.moshiKotlin
+
+    // Lottie
+    implementation Dependencies.lottie
+
+    // Coroutines
+    implementation Dependencies.coroutinesCore
+    implementation Dependencies.coroutinesAndroid
+
+    // glide
+    implementation Dependencies.glide
+    annotationProcessor Dependencies.glideCompiler
+
+    // Coil
+    implementation Dependencies.coil
+    implementation Dependencies.coilVideo
+
+    implementation Dependencies.kotlinReflect
+}
