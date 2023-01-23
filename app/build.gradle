@@ -25,6 +25,8 @@ android {
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        archivesBaseName = "lunch-picker-v${versionName}"
     }
 
     signingConfigs {
