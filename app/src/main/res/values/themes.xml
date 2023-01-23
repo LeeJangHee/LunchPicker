@@ -1,21 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.LaunchPicker" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.LaunchPicker" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 
     <style name="Theme.LaunchPicker" parent="Base.Theme.LaunchPicker" />
 
-    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+    <style name="MyActionBar" parent="Widget.Material3.Light.ActionBar.Solid">
         <item name="titleTextStyle">@style/MyActionBar.TitleStyle</item>
+        <item name="android:titleTextStyle">@style/MyActionBar.TitleStyle</item>
     </style>
 
-    <style name="MyActionBar.TitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">20dp</item>
+    <style name="MyActionBar.TitleStyle" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textSize" tools:ignore="SpUsage">22dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
 </resources>

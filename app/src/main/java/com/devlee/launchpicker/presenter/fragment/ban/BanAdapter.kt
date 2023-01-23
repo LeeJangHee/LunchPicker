@@ -13,7 +13,7 @@ import okhttp3.internal.toImmutableList
 
 class BanAdapter(
     private val selectedCallback: (List<String>) -> Unit
-): ListAdapter<String, BanAdapter.BanViewHolder>(diffUtilCallback) {
+) : ListAdapter<String, BanAdapter.BanViewHolder>(diffUtilCallback) {
 
     companion object {
         private val diffUtilCallback = object : DiffUtil.ItemCallback<String>() {
@@ -31,7 +31,7 @@ class BanAdapter(
     private val _selectedBanList: MutableList<String> = mutableListOf()
     val selectedBanList get() = _selectedBanList.toImmutableList()
 
-    inner class BanViewHolder(val binding: ItemBanBinding): RecyclerView.ViewHolder(binding.root)
+    inner class BanViewHolder(val binding: ItemBanBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BanViewHolder {
         return BanViewHolder(ItemBanBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -59,5 +59,14 @@ class BanAdapter(
         Log.d(TAG, "setIgnoreList() called with: prevList = ${prevList.toPrettyJson()}")
         _selectedBanList.clear()
         _selectedBanList.addAll(prevList)
+    }
+
+    fun setSelectedAll(isSelectedAll: Boolean, completed: (List<String>) -> Unit) {
+        _selectedBanList.clear()
+        if (isSelectedAll) {
+            _selectedBanList.addAll(currentList)
+        }
+        notifyItemRangeChanged(0, itemCount)
+        completed.invoke(selectedBanList)
     }
 }

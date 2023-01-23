@@ -6,12 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".presenter.fragment.ban.BanFragment">
 
+    <LinearLayout
+        android:id="@+id/selectAllBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/spaceView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/selectAllCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:background="@android:color/transparent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_selected_all"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/spaceView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/space"
+        app:layout_constraintBottom_toTopOf="@+id/banRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectAllBody" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/banRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_ban"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spaceView"
+        tools:listitem="@layout/item_ban" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,17 @@ package com.devlee.launchpicker.presenter.fragment.ban
 
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.devlee.launchpicker.R
 import com.devlee.launchpicker.databinding.FragmentBanBinding
 import com.devlee.launchpicker.util.Consts.STORE_LIST
+import com.devlee.launchpicker.util.Consts.TAG
 import com.devlee.launchpicker.util.CustomDecoration
 import com.devlee.launchpicker.util.PreferenceUtil
 import com.devlee.launchpicker.util.toDp
@@ -39,6 +40,7 @@ class BanFragment : Fragment() {
     lateinit var pref: PreferenceUtil
 
     private val selectedCallback: (List<String>) -> Unit = {
+        binding.selectAllCheck.isChecked = it.size == banAdapter.itemCount
         pref.setIgnoreStore(it)
     }
 
@@ -52,7 +54,17 @@ class BanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.banRecyclerView.init()
 
-        banAdapter.submitList(storeList)
+        banAdapter.submitList(storeList) {
+            binding.selectAllCheck.isChecked = banAdapter.selectedBanList.size == banAdapter.itemCount
+        }
+
+        binding.selectAllBody.setOnClickListener {
+            val checked = !binding.selectAllCheck.isChecked
+            binding.selectAllCheck.isChecked = checked
+            banAdapter.setSelectedAll(checked) {
+                pref.setIgnoreStore(it)
+            }
+        }
     }
 
     private fun RecyclerView.init() {
@@ -61,7 +73,7 @@ class BanFragment : Fragment() {
         addItemDecoration(
             CustomDecoration(
                 height = 1.toDp(),
-                color = Color.parseColor("#e0e0e0")
+                color = ContextCompat.getColor(requireContext(), R.color.space)
             )
         )
     }
