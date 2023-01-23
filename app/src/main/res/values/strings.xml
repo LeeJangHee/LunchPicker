@@ -11,6 +11,7 @@
     <string name="hint_once_item">선택할 수 있는 점심이 1개 입니다.</string>
     <string name="empty_item">선택할 수 있는 점심이 없습니다.</string>
     <string name="text_selected_all">전체선택</string>
+    <string name="app_version_text">version: v%s</string>
 
     <string-array name="lunch_store">
         <item>길농원</item>
