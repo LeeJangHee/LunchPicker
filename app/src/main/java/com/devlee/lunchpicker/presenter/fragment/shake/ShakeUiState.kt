@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.presenter.fragment.shake
+package com.devlee.lunchpicker.presenter.fragment.shake
 
 sealed class ShakeUiState {
     object Init : ShakeUiState()

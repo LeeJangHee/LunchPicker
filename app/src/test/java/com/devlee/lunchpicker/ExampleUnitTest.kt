@@ -1,4 +1,4 @@
-package com.devlee.launchpicker
+package com.devlee.lunchpicker
 
 import org.junit.Test
 

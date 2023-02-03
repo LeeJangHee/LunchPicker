@@ -1,13 +1,12 @@
-package com.devlee.launchpicker.di
+package com.devlee.lunchpicker.di
 
 import android.content.Context
 import android.content.Context.SENSOR_SERVICE
 import android.content.SharedPreferences
 import android.hardware.Sensor
 import android.hardware.SensorManager
-import com.devlee.launchpicker.R
-import com.devlee.launchpicker.util.Consts.STORE_LIST
-import com.devlee.launchpicker.util.PreferenceUtil
+import com.devlee.lunchpicker.R
+import com.devlee.lunchpicker.util.Consts.STORE_LIST
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

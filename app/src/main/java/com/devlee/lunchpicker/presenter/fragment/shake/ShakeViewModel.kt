@@ -1,13 +1,13 @@
-package com.devlee.launchpicker.presenter.fragment.shake
+package com.devlee.lunchpicker.presenter.fragment.shake
 
 import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devlee.launchpicker.util.Consts.STORE_LIST
-import com.devlee.launchpicker.util.Consts.TAG
-import com.devlee.launchpicker.util.PreferenceUtil
-import com.devlee.launchpicker.util.toPrettyJson
+import com.devlee.lunchpicker.util.Consts.STORE_LIST
+import com.devlee.lunchpicker.util.Consts.TAG
+import com.devlee.lunchpicker.util.PreferenceUtil
+import com.devlee.lunchpicker.util.toPrettyJson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow

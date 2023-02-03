@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.devlee.launchpicker">
+    package="com.devlee.lunchpicker">
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/lunch_picker_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.LaunchPicker"
-        android:name=".App">
+        android:name="com.devlee.lunchpicker.App">
         <activity
-            android:name=".presenter.activity.MainActivity"
+            android:name="com.devlee.lunchpicker.presenter.activity.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/Theme.LaunchPicker">

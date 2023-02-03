@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.presenter.fragment.ban
+package com.devlee.lunchpicker.presenter.fragment.ban
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.devlee.launchpicker.databinding.ItemBanBinding
-import com.devlee.launchpicker.util.Consts.TAG
-import com.devlee.launchpicker.util.toPrettyJson
+import com.devlee.lunchpicker.databinding.ItemBanBinding
+import com.devlee.lunchpicker.util.Consts.TAG
+import com.devlee.lunchpicker.util.toPrettyJson
 import okhttp3.internal.toImmutableList
 
 class BanAdapter(

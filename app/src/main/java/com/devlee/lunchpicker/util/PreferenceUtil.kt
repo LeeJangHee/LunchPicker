@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.util
+package com.devlee.lunchpicker.util
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

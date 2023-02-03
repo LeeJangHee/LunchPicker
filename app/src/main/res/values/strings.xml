@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LaunchPicker</string>
+    <string name="app_name">LunchPicker</string>
     <string name="action_settings">Settings</string>
     <string name="action_ban">Ban Card</string>
     <!-- Strings used for fragments for navigation -->
@@ -41,7 +41,7 @@
         <item>에슬로우</item>
         <item>위드미플러스편의점</item>
         <item>이태리부대찌개</item>
-        <item>암고집한우</item>
+        <item>임고집한우</item>
         <item>전주콩나물국밥</item>
         <item>족발보쌈마을</item>
         <item>초량돼지</item>

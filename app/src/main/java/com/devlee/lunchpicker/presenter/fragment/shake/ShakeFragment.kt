@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.presenter.fragment.shake
+package com.devlee.lunchpicker.presenter.fragment.shake
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -13,15 +13,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.devlee.launchpicker.BuildConfig
-import com.devlee.launchpicker.R
-import com.devlee.launchpicker.databinding.FragmentShakeBinding
-import com.devlee.launchpicker.util.Consts.STORE_LIST
-import com.devlee.launchpicker.util.Consts.TAG
-import com.devlee.launchpicker.util.PreferenceUtil
-import com.devlee.launchpicker.util.toPrettyJson
+import com.devlee.lunchpicker.BuildConfig
+import com.devlee.lunchpicker.R
+import com.devlee.lunchpicker.databinding.FragmentShakeBinding
+import com.devlee.lunchpicker.util.Consts.STORE_LIST
+import com.devlee.lunchpicker.util.Consts.TAG
+import com.devlee.lunchpicker.util.PreferenceUtil
+import com.devlee.lunchpicker.util.toPrettyJson
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 import javax.inject.Named
 

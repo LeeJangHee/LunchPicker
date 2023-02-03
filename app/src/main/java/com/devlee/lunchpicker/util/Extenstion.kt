@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.util
+package com.devlee.lunchpicker.util
 
 import android.content.res.Resources
 import androidx.annotation.RestrictTo

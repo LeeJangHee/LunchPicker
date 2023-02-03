@@ -1,4 +1,4 @@
-package com.devlee.launchpicker.util
+package com.devlee.lunchpicker.util
 
 object Consts {
     const val TAG = "ljhtest"
