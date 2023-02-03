@@ -1,9 +1,7 @@
 package com.devlee.lunchpicker.presenter.fragment.shake
 
 sealed interface ShakeEvent {
-    data class ShakeStart(
-        val choiceList: List<String>
-    ): ShakeEvent
+    object ShakeStart: ShakeEvent
     object ShakeEnd: ShakeEvent
 
 }

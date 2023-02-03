@@ -14,7 +14,7 @@ android {
     compileSdk Configurations.compileSdk
 
     defaultConfig {
-        applicationId "com.devlee.launchpicker"
+        applicationId "com.devlee.lunchpicker"
         minSdk Configurations.minSdk
         targetSdk Configurations.targetSdk
         versionCode Configurations.versionCode

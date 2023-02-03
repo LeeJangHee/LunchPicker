@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
+import kotlin.random.Random
 
 @HiltViewModel
 class ShakeViewModel @Inject constructor(
@@ -28,7 +29,7 @@ class ShakeViewModel @Inject constructor(
     private var _shakeUiState: MutableStateFlow<ShakeUiState> = MutableStateFlow(ShakeUiState.Init)
     val shakeUiState get() = _shakeUiState.asStateFlow()
 
-    private var _shakeRecycleStoreArray: MutableSharedFlow<String> = MutableSharedFlow(extraBufferCapacity = 3)
+    private var _shakeRecycleStoreArray: MutableSharedFlow<String> = MutableSharedFlow()
     val sakeRecycleStoreArray get() = _shakeRecycleStoreArray.asSharedFlow()
 
 
@@ -48,18 +49,18 @@ class ShakeViewModel @Inject constructor(
         choiceStoreList.removeAll(pref.getIgnoreStore())
     }
 
-    fun setShakeCount(count: Int) = viewModelScope.launch {
+    fun setShakeCount() = viewModelScope.launch {
         try {
             callShaking()
             var index: Int
-            repeat(30) {
+            repeat(50) {
                 index = choiceStoreList.indices.random()
                 _shakeRecycleStoreArray.emit(choiceStoreList[index])
                 when (it) {
-                    in 0..13 -> {
+                    in 0..26 -> {
                         delay(40)
                     }
-                    in 14..25 -> {
+                    in 27..45 -> {
                         delay(100)
                     }
                     else -> {
@@ -67,9 +68,9 @@ class ShakeViewModel @Inject constructor(
                     }
                 }
             }
-            _shakeRecycleStoreArray.emit(choiceStoreList[count])
+            _shakeRecycleStoreArray.emit(choiceStoreList[choiceStoreList.indices.random()])
         } finally {
-            callShakeComplete(count)
+            callShakeComplete(choiceStoreList.indices.random())
         }
     }
 
@@ -101,8 +102,15 @@ class ShakeViewModel @Inject constructor(
     fun onEvent(event: ShakeEvent) {
         when (event) {
             is ShakeEvent.ShakeStart -> {
-                Log.i(TAG, "onEvent: \n${event.choiceList.toPrettyJson()}")
-                choiceStoreList = event.choiceList.toMutableList()
+                if (choiceStoreList.isNotEmpty()) {
+                    choiceStoreList.clear()
+                }
+                choiceStoreList.addAll(storeList)
+                val ignoreList = pref.getIgnoreStore()
+                if (ignoreList.isNotEmpty()) {
+                    choiceStoreList.removeAll(ignoreList)
+                }
+
                 if (choiceStoreList.isEmpty()) {
                     callShakeIsEmpty()
                 } else if (choiceStoreList.size == 1) {

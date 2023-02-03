@@ -47,13 +47,10 @@ class ShakeFragment : Fragment(), SensorEventListener {
     @Inject
     lateinit var pref: PreferenceUtil
 
-    private val choiceStoreList: MutableList<String> = mutableListOf()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         _binding = FragmentShakeBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -65,11 +62,11 @@ class ShakeFragment : Fragment(), SensorEventListener {
         renderAnimateText()
 
         binding.shakeRegisterBtn.setOnClickListener {
-            shakeViewModel.onEvent(ShakeEvent.ShakeStart(choiceStoreList))
+            shakeViewModel.onEvent(ShakeEvent.ShakeStart)
         }
 
         binding.shakeRestartBtn.setOnClickListener {
-            shakeViewModel.onEvent(ShakeEvent.ShakeStart(choiceStoreList))
+            shakeViewModel.onEvent(ShakeEvent.ShakeStart)
         }
 
         binding.appVersion.text = getString(R.string.app_version_text, BuildConfig.VERSION_NAME)
@@ -123,9 +120,6 @@ class ShakeFragment : Fragment(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
-        choiceStoreList.clear()
-        choiceStoreList.addAll(storeList)
-        choiceStoreList.removeAll(pref.getIgnoreStore())
     }
 
     override fun onPause() {
@@ -141,8 +135,6 @@ class ShakeFragment : Fragment(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
         if (event == null) return
         if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
-            Log.e(TAG, "onSensorChanged \n${event.toPrettyJson()}")
-
             // x, y, z 받기
             val x = event.values[0]
             val y = event.values[1]
@@ -168,7 +160,7 @@ class ShakeFragment : Fragment(), SensorEventListener {
                 }
 
                 // 흔들었을 때, 행동
-                shakeViewModel.setShakeCount(choiceStoreList.indices.random())
+                shakeViewModel.setShakeCount()
             }
         }
     }
